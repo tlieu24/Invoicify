@@ -5,21 +5,41 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.el.ally.invoicify.models.BillingRecord;
 import com.el.ally.invoicify.models.Invoice;
 import com.el.ally.invoicify.models.InvoiceLineItem;
 import com.el.ally.invoicify.models.InvoiceView;
+import com.el.ally.invoicify.repositories.BillingRecordRepository;
+import com.el.ally.invoicify.repositories.CompanyRepository;
+import com.el.ally.invoicify.repositories.InvoiceRepository;
 
+
+@RestController
+@RequestMapping("/api/invoice")
 public class InvoiceController {
 	
-	@AutoWired
+	@Autowired
+	private BillingRecordRepository recordRepository;
+	
+	@Autowired
+	private CompanyRepository companyRepository;
+	
+	@Autowired
+	private InvoiceRepository invoiceRepository;
+	
+  public InvoiceController(InvoiceRepository invoiceRepository) {
+	    this.invoiceRepository = invoiceRepository;
+	  }
 	
 	@PostMapping("{clientId}")
-	public Invoice createInvoice(@RequestBody InvoiceView invoiceView, @PathVariable long clientId) {
+	public Invoice createInvoice(@RequestBody InvoiceView invoiceView, @PathVariable int clientId) {
 
 		List<BillingRecord> records = recordRepository.findByIdIn(invoiceView.getRecordIds());
 		long nowish = Calendar.getInstance().getTimeInMillis();

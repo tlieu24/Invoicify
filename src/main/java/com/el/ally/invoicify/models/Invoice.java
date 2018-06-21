@@ -23,12 +23,12 @@ public class Invoice {
 	    private Company company;
 	 	
 	 	private Date createdOn;
-	 	private Long invoiceDescription;
+	 	private String invoiceDescription;
 	 	
 	 	@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL)
 	 	private List<InvoiceLineItem> lineItems;
 	 	
-	 	public Invoice(Date createdOn, Long invoiceDescription, List<InvoiceLineItem> lineItems) {
+	 	public Invoice(Date createdOn, String invoiceDescription, List<InvoiceLineItem> lineItems) {
 	        this.createdOn = createdOn;
 	        this.invoiceDescription = invoiceDescription;
 	        this.lineItems = lineItems; 
@@ -54,11 +54,11 @@ public class Invoice {
 			this.createdOn = createdOn;
 		}
 
-		public Long getInvoiceDescription() {
+		public String getInvoiceDescription() {
 			return invoiceDescription;
 		}
 
-		public void setInvoiceDescription(Long invoiceDescription) {
+		public void setInvoiceDescription(String invoiceDescription) {
 			this.invoiceDescription = invoiceDescription;
 		}
 
