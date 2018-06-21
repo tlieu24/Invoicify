@@ -22,7 +22,14 @@ public class Company {
 	@OneToMany(mappedBy = "company")
 	private List<Invoice> invoices;
 
+	//constructors
+	public Company() {	
+	}
+	public Company(String name) {
+		this.name = name;
+	}
 	
+	//getters and setters
 	public int getId() {
 		return id;
 	}
