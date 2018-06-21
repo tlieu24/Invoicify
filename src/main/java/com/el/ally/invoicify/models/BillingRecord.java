@@ -35,6 +35,13 @@ public abstract class BillingRecord {
 	
 	public BillingRecord() {}
 	
+	public BillingRecord(Date createdOn, String description, InvoiceLineItem lineItem, Company company) {
+		this.createdOn = createdOn;
+		this.description = description;
+		this.lineItem = lineItem;
+		this.company = company;
+	}
+	
 	public double getTotal(double amount) {
 		return amount;
 	}

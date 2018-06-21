@@ -1,5 +1,7 @@
 package com.el.ally.invoicify.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,6 +13,10 @@ public class FlatFeeBillingRecord extends BillingRecord {
 	
 	public FlatFeeBillingRecord() {}
 
+	public FlatFeeBillingRecord(Date createdOn, String description, InvoiceLineItem lineItem, Company company, int amount) {
+		super(createdOn, description, lineItem, company);
+		this.amount = amount;
+	}
 	@Override
 	public double getTotal(double amount) {
 		return super.getTotal(amount);

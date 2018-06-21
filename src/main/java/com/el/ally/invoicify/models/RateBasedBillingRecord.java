@@ -1,5 +1,7 @@
 package com.el.ally.invoicify.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,6 +13,12 @@ public class RateBasedBillingRecord extends BillingRecord {
 	private int quantity;
 	
 	public RateBasedBillingRecord() {}
+	
+	public RateBasedBillingRecord(Date createdOn, String description, InvoiceLineItem lineItem, Company company, double rate, int quantity) {
+		super(createdOn, description, lineItem, company);
+		this.rate = rate;
+		this.quantity= quantity;
+	}
 
 	@Override
 	public double getTotal(double rate, double quantity) {
