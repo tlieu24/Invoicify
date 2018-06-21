@@ -33,7 +33,17 @@ public class InvoiceLineItem {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public InvoiceLineItem() {
+		
+	}
 
+	public InvoiceLineItem(BillingRecord billingRecord, Date date, Invoice invoice) {
+		this.billingRecord = billingRecord;
+		this.createdOn = date;
+		this.invoice = invoice;
+	}
+	
 	public BillingRecord getBillingRecord() {
 		return billingRecord;
 	}
