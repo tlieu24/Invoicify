@@ -1,4 +1,4 @@
-package com.el.ally.wimp;
+package com.el.ally.invoicify;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
