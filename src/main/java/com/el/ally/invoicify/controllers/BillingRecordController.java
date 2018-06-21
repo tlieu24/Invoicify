@@ -22,8 +22,12 @@ public class BillingRecordController {
 	@Autowired
 	private BillingRecordRepository billingRecordRepository;
 	
+	public BillingRecordController(BillingRecordRepository billingrecordRepo) {
+		this.billingRecordRepository = billingrecordRepo;
+	}
+
 	@GetMapping
-	public List<BillingRecord> getBillingRecords() {
+	public List<BillingRecord> getAll() {
 		List<BillingRecord> billingRecords = billingRecordRepository.findAll();
 		return billingRecords;
 	}

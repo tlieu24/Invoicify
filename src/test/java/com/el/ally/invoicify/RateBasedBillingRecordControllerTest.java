@@ -18,7 +18,7 @@ import com.el.ally.invoicify.repositories.InvoiceLineItemRepository;
 
 public class RateBasedBillingRecordControllerTest {
 
-    private RateBasedBillingRecordControllerTest controller;
+    private RateBasedBillingRecordController controller;
 
     @Mock
     private BillingRecordRepository billingRecordRepo;
