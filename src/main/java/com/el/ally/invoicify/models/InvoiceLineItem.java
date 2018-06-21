@@ -23,7 +23,7 @@ public class InvoiceLineItem {
 	
 	private Date createdOn;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Invoice invoice;
 
 	public int getId() {

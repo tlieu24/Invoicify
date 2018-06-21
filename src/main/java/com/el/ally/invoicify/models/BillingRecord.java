@@ -8,33 +8,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="billing_record")
+@Table(name="billingRecord")
 public abstract class BillingRecord {
 
 	@Id
 	@GeneratedValue
 	private int id;
 	
-	@Column(nullable = false)
 	private Date createdOn;
 	
 	@Size(max=1000)
-	@Column(nullable = false)
 	private String description;
 	
 	@Size(max=1000)
-	@Column(nullable = false)
-	@OneToMany(mappedBy="billing_record")
-	private String lineItem;
+	@OneToOne(mappedBy="billingRecord")
+	private InvoiceLineItem lineItem;
 	
-	@Size(max=75)
-	@Column(nullable = false)
+
 	@ManyToOne
-	private String company;
+	private Company company;
 	
 	public BillingRecord() {}
 	
@@ -70,19 +67,19 @@ public abstract class BillingRecord {
 		this.description = description;
 	}
 
-	public String getLineItem() {
+	public InvoiceLineItem getLineItem() {
 		return lineItem;
 	}
 
-	public void setLineItem(String lineItem) {
+	public void setLineItem(InvoiceLineItem lineItem) {
 		this.lineItem = lineItem;
 	}
 
-	public String getCompany() {
+	public Company getCompany() {
 		return company;
 	}
 
-	public void setCompany(String company) {
+	public void setCompany(Company company) {
 		this.company = company;
 	}
 	

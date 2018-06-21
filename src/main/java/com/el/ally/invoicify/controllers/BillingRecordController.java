@@ -22,11 +22,11 @@ public class BillingRecordController {
 	@Autowired
 	private BillingRecordRepository billingRecordRepository;
 	
-//	@GetMapping
-//	public List<BillingRecord> getBillingRecords() {
-//		List<BillingRecord> billingRecords = billingRecordRepository.findAll();
-//		return billingRecords;
-//	}
+	@GetMapping
+	public List<BillingRecord> getBillingRecords() {
+		List<BillingRecord> billingRecords = billingRecordRepository.findAll();
+		return billingRecords;
+	}
 //
 //    @PostMapping
 //	public BillingRecord createBillingRecord(@RequestBody BillingRecord billingRecord) {

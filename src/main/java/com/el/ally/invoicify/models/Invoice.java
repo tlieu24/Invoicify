@@ -20,15 +20,15 @@ public class Invoice {
 	    @GeneratedValue
 	    private int id;
 	 	@ManyToOne
-	    //private List<Company> company;
+	    private Company company;
 	 	
 	 	private Date createdOn;
 	 	private Long invoiceDescription;
 	 	
-	 	//@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL
-	 	private int lineItems;
+	 	@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL)
+	 	private List<InvoiceLineItem> lineItems;
 	 	
-	 	public Invoice(Date createdOn, Long invoiceDescription, int lineItems) {
+	 	public Invoice(Date createdOn, Long invoiceDescription, List<InvoiceLineItem> lineItems) {
 	        this.createdOn = createdOn;
 	        this.invoiceDescription = invoiceDescription;
 	        this.lineItems = lineItems; 
@@ -62,13 +62,23 @@ public class Invoice {
 			this.invoiceDescription = invoiceDescription;
 		}
 
-		public int getLineItems() {
+		public List<InvoiceLineItem> getLineItems() {
 			return lineItems;
 		}
 
-		public void setLineItems(int lineItems) {
+		public void setLineItems(List<InvoiceLineItem> lineItems) {
 			this.lineItems = lineItems;
 		}
+
+		public Company getCompany() {
+			return company;
+		}
+
+		public void setCompany(Company company) {
+			this.company = company;
+		}
+		
+		
 	    
 	
 }
