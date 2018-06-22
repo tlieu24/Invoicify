@@ -36,7 +36,6 @@ public class InvoiceController {
 	private InvoiceRepository invoiceRepository;
 	
 	public InvoiceController(InvoiceRepository invoiceRepository) {
-<<<<<<< HEAD
 	    this.invoiceRepository = invoiceRepository;
 	}
 	
@@ -45,17 +44,9 @@ public class InvoiceController {
 		List<Invoice> invoice = invoiceRepository.findAll();
 		return invoice;
 	}
-	
-=======
-		    this.invoiceRepository = invoiceRepository;
-	}
-	  
-	@GetMapping
-	public List<Invoice> getAll(){
-		  return invoiceRepository.findAll();
-	}
-		
->>>>>>> 1ddc46700ead085afbd453d655ff326f487a81ca
+
+
+
 	@PostMapping("{clientId}")
 	public Invoice createInvoice(@RequestBody InvoiceView invoiceView, @PathVariable int clientId) {
 	

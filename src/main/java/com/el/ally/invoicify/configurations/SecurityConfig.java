@@ -1,6 +1,7 @@
 package com.el.ally.invoicify.configurations;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.el.ally.invoicify.services.AppUserDetailsService;
 
-import io.swagger.models.HttpMethod;
+
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -25,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //require authorization for everything else
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http    
+        http.authorizeRequests()
         .antMatchers(HttpMethod.PUT, "/api/session").permitAll()
 
     	.antMatchers(HttpMethod.POST, "/api/user").permitAll()    
