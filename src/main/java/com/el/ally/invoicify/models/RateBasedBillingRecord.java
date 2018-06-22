@@ -21,7 +21,7 @@ public class RateBasedBillingRecord extends BillingRecord {
 	}
 
 	@Override
-	public double getTotal(double rate, double quantity) {
+	public int getTotal(int rate, int quantity) {
 		return super.getTotal(rate, quantity);
 	}
 

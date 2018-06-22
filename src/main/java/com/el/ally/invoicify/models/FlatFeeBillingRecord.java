@@ -18,7 +18,7 @@ public class FlatFeeBillingRecord extends BillingRecord {
 		this.amount = amount;
 	}
 	@Override
-	public double getTotal(double amount) {
+	public int getTotal(int amount) {
 		return super.getTotal(amount);
 	}
 
