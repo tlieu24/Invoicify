@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.cdi.JpaRepositoryExtension;
 
 import com.el.ally.invoicify.models.InvoiceLineItem;
 
-public interface InvoiceLineItemRepository extends JpaRepository<InvoiceLineItem, Integer> {
+public interface  InvoiceLineItemRepository extends JpaRepository<InvoiceLineItem, Integer> {
 	
 }

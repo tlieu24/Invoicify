@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,9 +35,15 @@ public class InvoiceController {
 	@Autowired
 	private InvoiceRepository invoiceRepository;
 	
-  public InvoiceController(InvoiceRepository invoiceRepository) {
+	public InvoiceController(InvoiceRepository invoiceRepository) {
 	    this.invoiceRepository = invoiceRepository;
-	  }
+	}
+	
+	@GetMapping
+	public List<Invoice> getAll() {
+		List<Invoice> invoice = invoiceRepository.findAll();
+		return invoice;
+	}
 	
 	@PostMapping("{clientId}")
 	public Invoice createInvoice(@RequestBody InvoiceView invoiceView, @PathVariable int clientId) {
