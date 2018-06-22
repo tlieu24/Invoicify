@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="invoiceLineItem")
 public class InvoiceLineItem {
@@ -18,11 +20,13 @@ public class InvoiceLineItem {
 	@GeneratedValue
 	private int id;
 	
+	@JsonBackReference
 	@OneToOne
 	private BillingRecord billingRecord;
 	
 	private Date createdOn;
 	
+	@JsonBackReference(value ="secondParent")
 	@ManyToOne
 	private Invoice invoice;
 

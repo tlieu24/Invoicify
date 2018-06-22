@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="invoice")
 public class Invoice {
@@ -19,13 +22,16 @@ public class Invoice {
 	 	@Id
 	    @GeneratedValue
 	    private int id;
+	 	
+	 	@JsonBackReference(value ="secondParent")
 	 	@ManyToOne
 	    private Company company;
 	 	
 	 	private Date createdOn;
 	 	private String invoiceDescription;
 	 	
-	 	@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL)
+	 	@JsonManagedReference(value="secondParent")
+	 	@OneToMany(mappedBy="invoice")
 	 	private List<InvoiceLineItem> lineItems;
 	 	
 	 	public Invoice(Date createdOn, String invoiceDescription, List<InvoiceLineItem> lineItems) {

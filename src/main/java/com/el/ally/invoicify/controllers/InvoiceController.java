@@ -36,6 +36,7 @@ public class InvoiceController {
 	private InvoiceRepository invoiceRepository;
 	
 	public InvoiceController(InvoiceRepository invoiceRepository) {
+<<<<<<< HEAD
 	    this.invoiceRepository = invoiceRepository;
 	}
 	
@@ -45,18 +46,28 @@ public class InvoiceController {
 		return invoice;
 	}
 	
+=======
+		    this.invoiceRepository = invoiceRepository;
+	}
+	  
+	@GetMapping
+	public List<Invoice> getAll(){
+		  return invoiceRepository.findAll();
+	}
+		
+>>>>>>> 1ddc46700ead085afbd453d655ff326f487a81ca
 	@PostMapping("{clientId}")
 	public Invoice createInvoice(@RequestBody InvoiceView invoiceView, @PathVariable int clientId) {
-
+	
 		List<BillingRecord> records = recordRepository.findByIdIn(invoiceView.getRecordIds());
 		long nowish = Calendar.getInstance().getTimeInMillis();
 		Date now = new Date(nowish);
 		Invoice invoice = new Invoice();
-
+	
 		invoice.setInvoiceDescription(invoiceView.getInvoiceDescription());
-
+	
 		List<InvoiceLineItem> items = new ArrayList<InvoiceLineItem>();
-
+	
 		for (BillingRecord record : records) {
 			InvoiceLineItem lineItem = new InvoiceLineItem();
 			lineItem.setBillingRecord(record);
@@ -64,13 +75,13 @@ public class InvoiceController {
 			lineItem.setInvoice(invoice);
 			items.add(lineItem);
 		}
-
+	
 		invoice.setLineItems(items);
 		invoice.setCreatedOn(now);
 		invoice.setCompany(companyRepository.findOne(clientId));
-
+	
 		return invoiceRepository.save(invoice);
-
+	
 	}
 
 }

@@ -12,6 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="billingRecord")
 public abstract class BillingRecord {
@@ -26,10 +29,12 @@ public abstract class BillingRecord {
 	private String description;
 	
 	@Size(max=1000)
+	@JsonManagedReference
 	@OneToOne(mappedBy="billingRecord")
 	private InvoiceLineItem lineItem;
 	
 
+	@JsonBackReference(value ="secondParent")
 	@ManyToOne
 	private Company company;
 	
@@ -42,11 +47,11 @@ public abstract class BillingRecord {
 		this.company = company;
 	}
 	
-	public double getTotal(double amount) {
+	public int getTotal(int amount) {
 		return amount;
 	}
 	
-	public double getTotal(double rate, double quantity) {
+	public int getTotal(int rate, int quantity) {
 		return rate * quantity;
 	}
 
