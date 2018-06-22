@@ -1,18 +1,30 @@
-package com.el.ally.invoicify.controllers;import org.springframework.beans.factory.annotation.Autowired;import com.el.ally.invoicify.models.BillingRecord;
+package com.el.ally.invoicify.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.el.ally.invoicify.models.FlatFeeBillingRecord;
 
-import com.el.ally.invoicify.repositories.BillingRecordRepository;public class FlatFeeBillingRecordController {
+import com.el.ally.invoicify.repositories.BillingRecordRepository;
 
-    
+
+@RestController
+@RequestMapping("/api/billing-record")
+public class FlatFeeBillingRecordController {
 
     @Autowired
-
-    private BillingRecordRepository billingRecordRepository;    public FlatFeeBillingRecordController(BillingRecordRepository billingRecordRepository) {
+    private BillingRecordRepository billingRecordRepository;    
+    
+    public FlatFeeBillingRecordController(BillingRecordRepository billingRecordRepository) {
 
         this.billingRecordRepository = billingRecordRepository;
 
-    }    public FlatFeeBillingRecord create(FlatFeeBillingRecord ffbRecord) {
+    }    
+    
+    @PostMapping("flat-fee/{clientId}")
+    public FlatFeeBillingRecord create(FlatFeeBillingRecord ffbRecord) {
 
        //save billingRecord to database
 
