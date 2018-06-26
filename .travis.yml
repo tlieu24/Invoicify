@@ -1,6 +1,11 @@
 language: java
-services: 
-  - postgresql
-before_script: 
-  - "psql -c 'create database invoicify;' -U postgres"
-  - "psql -c \"CREATE USER invoicify WITH PASSWORD 'admin';\" -U postgres"
+services:
+- postgresql
+before_script:
+- psql -c 'create database invoicify;' -U postgres
+- psql -c "CREATE USER invoicify WITH PASSWORD 'admin';" -U postgres
+deploy:
+  provider: heroku
+  name: mighty-peak-27842
+  api_key:
+    secure: gSwoAZs96Yqzlay0uGUhbRZa9BxXUUDPP8mhGArRJFbpPtMjQ8wvt4DcnH6bJmU4w+N9DQcVFjkU/wQ9xI6eHSvJAjAjhkQqq7sSkDDPmnB14byCQ+sMv/td7w82Vo1Jjk1xrjiQ/v83g/CNYoVfnBjN9FtyNxKx5BYs9Fh1sfF+IK1UvR3tYLmE9YfcGjBZPNKnF71sczjcPeapkDUsp69vkYKuDd+tHS2K+YEb62JarnlrUCv0ALZSjf8y0tTAFTEghwg5BsZVJXAySHuW9DMsrdOCoMLDGYjhhKe+MQf6vr9aJZ22coyXXzaYpx2Ievs5mAejf3tWDYar0zM9CBqTjzbglIUfAVF7CjK/Vzwsqp2KRf2VWb9Ot9aNX3lTu945vEqDFh9Ae+p0CMHm8+cudTLz52/yctrRtsQVRcP3qniblB/0rSYfplwHGbUZhMHYAQ5tfNQzTtriZEZ6b4yzu76t9IYbim6Cag5Gnjrj1rL/XgQUB4MyIB8xvp5g8/y20F1ONdGxGxDuZmxoJWTCmOO6JuoQXvBiLX8FmBuhqhOtyeazvTcJThdpKXQiFkhSNUsHtzgl/+0lPJN8dR1umuBEKtvHPDp+gga3RYd7bGjJW7Hx/wltAD5AArqV85J+BPcqEGx7t7kEph753g6qurVwXseysyDIvSVon/M=
