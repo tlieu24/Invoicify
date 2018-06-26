@@ -1,6 +1,8 @@
 language: java
+
 services:
-  - postgresql
+ 
+- postgresql
 
 before_script:
   
