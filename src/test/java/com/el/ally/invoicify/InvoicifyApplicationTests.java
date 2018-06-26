@@ -23,9 +23,9 @@ import com.el.ally.invoicify.repositories.InvoiceRepository;
 @SpringBootTest
 public class InvoicifyApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+//	@Test
+//	public void contextLoads() {
+//	}
 	private InvoiceController controller;
 
     @Mock
