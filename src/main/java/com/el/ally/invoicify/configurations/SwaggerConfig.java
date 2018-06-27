@@ -16,7 +16,7 @@ public class SwaggerConfig {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("«your base package, here»"))
+                .apis(RequestHandlerSelectors.basePackage("com.el.ally.invoicify.controllers"))
                 .build();
 
     }

@@ -11,7 +11,7 @@ import com.el.ally.invoicify.models.InvoiceLineItem;
 import com.el.ally.invoicify.repositories.InvoiceLineItemRepository;
 
 @RestController
-@RequestMapping("/invoicify/InvoiceLineItem")
+@RequestMapping("/api/InvoiceLineItem")
 public class InvoiceLineItemController {
 	
 	@Autowired
