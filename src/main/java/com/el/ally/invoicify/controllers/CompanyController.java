@@ -56,12 +56,11 @@ public class CompanyController {
 	}
 
 	@DeleteMapping("{id}")
-	public Company deleteCompany(@PathVariable int id) {
+	public boolean deleteCompany(@PathVariable int id) {
 
 		Company originalCompany = companyRepository.findOne(id);
-
 		companyRepository.delete(originalCompany);
-
-		return originalCompany;
+		
+		return true;
 	}
 }

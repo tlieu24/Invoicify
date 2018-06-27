@@ -17,7 +17,7 @@ public class InvoiceLineItemController {
 	@Autowired
 	private InvoiceLineItemRepository invoiceLineItemRepository;
 	
-	@GetMapping("")
+	@GetMapping
 	public List<InvoiceLineItem> getAll() {
 		return invoiceLineItemRepository.findAll();
 	}
